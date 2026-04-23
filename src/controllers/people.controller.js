@@ -23,6 +23,10 @@ const addPerson = (req, res) => {
     });
 
   } catch (error) {
+    if (error.message === 'Email already exists') {
+      return res.status(400).json({ message: error.message });
+    }
+
     return res.status(500).json({ message: error.message });
   }
 };
@@ -32,16 +36,11 @@ const getPeople = (req, res) => {
     const people = fetchPeople();
     return res.status(200).json(people);
   } catch (error) {
-    if (error.message === 'Email already exists') {
-      return res.status(400).json({ message: error.message });
-    }
-
     return res.status(500).json({ message: error.message });
+  }
+};
 
-  };
-
-  module.exports = {
-    addPerson,
-    getPeople
-  };
-}
+module.exports = {
+  addPerson,
+  getPeople
+};
