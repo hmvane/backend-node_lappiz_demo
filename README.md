@@ -1,54 +1,83 @@
 # Lappiz Demo - Backend (Node.js)
 
-API REST desarrollada con Node.js y Express para gestionar interesados en una demo.
+API REST desarrollada con Node.js y Express para la gestión de interesados en una demo de Lappiz LowCode.
 
-## Descripción
+##  Descripción
 
-Permite:
+Este servicio permite:
 
-Registrar usuarios
-Listar usuarios
-Persistir datos en archivo JSON
+* Registrar personas interesadas en una demo
+* Listar las personas registradas
+* Persistir los datos en un archivo JSON (sin base de datos)
 
+---
 ## Tecnologías
 
-Node.js
-Express
-JSON (persistencia)
+* Node.js
+* Express
+* CORS
+* File System (JSON)
 
-## Instalación
-
-npm install
-npm run dev
-
-
-Servidor:
-http://localhost:3001
-
-##  Endpoints
-
-GET /getPeople
-POST /addPerson
-
-## Arquitectura
+## Estructura del proyecto
 
 ```
 src/
-├── routes/
-├── controllers/
-├── services/
-├── utils/
-└── data/
+├── routes/        # Definición de endpoints
+├── controllers/   # Lógica de control (req/res)
+├── services/      # Lógica de negocio
+├── utils/         # Manejo de archivos
+└── data/          # Persistencia en JSON
 ```
+
+## Instalación
+
+```bash
+npm install
+```
+
+## Ejecución
+
+```bash
+npm run dev
+```
+
+Servidor disponible en:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Endpoints
+
+### Obtener personas
+
+```
+GET /people/getPeople
+```
+
+### Registrar persona
+
+```
+POST /people/addPerson
+```
+
+## Validaciones implementadas
+
+* Campos obligatorios (name, email)
+* Validación básica de email
+* Prevención de emails duplicados
+
+## Consideraciones
+
+* Los datos se almacenan en un archivo JSON local
+* Arquitectura basada en separación de responsabilidades
+
+## 👩‍💻 Autor
+
+Desarrollado por: **Heidy Vanegas Suazo**
 
 ## Nota
 
-Persistencia simple en JSON para efectos de la prueba técnica.
-
-## Autor
-
-Desarrollado por: Heidy Vanegas Suazo
-
-## Licencia 
-
-Proyecto desarrollado como parte de una prueba técnica.
+Este proyecto fue desarrollado como parte de una prueba técnica.
